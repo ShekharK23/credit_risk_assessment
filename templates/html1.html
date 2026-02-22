@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>CREDIT RISK ASSESSMENT</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<style>
+		#div0 {
+			background-color: rgb(169, 252, 43);
+			width: 100%;
+			height: 50px;
+			position: fixed;
+			top:1px;
+			bottom:auto;
+			right:1px;
+			left:auto;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		#pred {
+			background-color: beige;
+			width: 30%;
+			height: 650px;
+			float: right;
+			position: fixed;
+			top:51px;
+			right:1px;
+		}
+
+		#div2 {
+			background-color: skyblue;
+			width: 69%;
+			height: 650px;
+			position: fixed;
+			top:51px;
+			left:1px;
+		}
+
+		#div3 {
+			background-color: greenyellow;
+			width: 100%;
+			height: 50px;
+			position: fixed;
+			top:auto;
+			bottom:1px;
+			right:1px;
+			left:auto;
+			display: flex;
+			justify-content: right;
+		}
+
+		#id {
+			text-indent: 4em;
+			text-justify: distribute-all-lines;
+		}
+	</style>
+</head>
+<body>
+	<div id="div0">
+		<h1>Credit Risk Assessment</h1>
+	</div>
+	<div id="pred">
+		<h2>Prediction</h2>
+		<form method="POST", action="{{url_for('home')}}">
+			<label for="person_age">Age:</label>
+			<input type="number" id="person_age" name="person_age"><br><br>
+	
+			<label for="person_income">Income:</label>
+			<input type="number" id="person_income" name="person_income"><br><br>
+	
+			<label for="person_home_ownership">Home Ownership:</label>
+			<select id="person_home_ownership" name="person_home_ownership">
+				<option value="RENT">Rent</option>
+				<option value="MORTGAGE">Mortgage</option>
+				<option value="OWN">Own</option>
+				<option value="OTHER">Other</option>
+			</select><br><br>
+	
+			<label for="person_emp_length">Employment Length:</label>
+			<input type="number" id="person_emp_length" name="person_emp_length"><br><br>
+	
+			<label for="loan_intent">Loan Intent:</label>
+			<select id="loan_intent" name="loan_intent">
+				<option value="VENTURE">Business/Venture</option>
+				<option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+				<option value="EDUCATION">Educational</option>
+				<option value="HOMEIMPROVEMENT">Home Improvement</option>
+				<option value="MEDICAL">Medical</option>
+				<option value="PERSONAL">Personal</option>
+			</select><br><br>
+	
+			<label for="loan_grade">Loan Grade:</label>
+			<select id="loan_grade" name="loan_grade">
+				<option value="A">A</option>
+				<option value="B">B</option>
+				<option value="C">C</option>
+				<option value="D">D</option>
+				<option value="E">E</option>
+				<option value="F">F</option>
+				<option value="G">G</option>
+			</select><br><br>
+	
+			<label for="loan_amnt">Loan Amount:</label>
+			<input type="number" id="loan_amnt" name="loan_amnt"><br><br>
+	
+			<label for="loan_int_rate">Loan Interest Rate:</label>
+			<input type="any" id="loan_int_rate" name="loan_int_rate"><br><br>
+	
+			<label for="loan_percent_income">Loan Percent of Income:</label>
+			<input type="any" id="loan_percent_income" name="loan_percent_income"><br><br>
+	
+			<label for="cb_person_default_on_file">Default on File:</label>
+			<input type="radio" id="cb_person_default_on_file_yes" name="cb_person_default_on_file" value="Y">
+			
+			<label for="cb_person_default_on_file_yes">Yes</label>
+			<input type="radio" id="cb_person_default_on_file_no" name="cb_person_default_on_file" value="N">
+			
+			<label for="cb_person_default_on_file_no">No</label><br><br>
+	
+			<label for="cb_person_cred_hist_length">Credit History Length:</label>
+			<input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length"><br><br>
+			
+			<input type="submit" value="Submit">
+		</form>
+		</div>
+	</div>
+	<div id="div2">
+		<h2>Problem Statement</h2>
+		<p id="id">
+			Today the study of financial credit risk assessment attracts increasing attentions in the face of one of the most severe financial crisis ever observed in the world
+			The accurate assessment of financial credit risk and prediction of business failure play an essential role both on economics and society
+			Credit risk management is the practice of mitigating losses by understanding the adequacy of a banks capital and loan loss reserves at any given time a process that has long been a challenge for financial institutions.
+		</p>
+		<p id="id">
+			The global financial crisis and the credit crunch that followed put credit risk management into the regulatory spotlight. As a result, regulators began to demand more transparency. They wanted to know that a bank has thorough knowledge of customers and their associated credit risk. And new Basel III regulations will create an even bigger regulatory burden for banks.
+		</p>
+		<p id="id">
+			To comply with the more stringent regulatory requirements and absorb the higher capital costs for credit risk, many banks are overhauling their approaches to credit risk. But banks who view this as strictly a compliance exercise are being short-sighted. Better credit risk management also presents an opportunity to greatly improve overall performance and secure a competitive advantage.
+		</p>
+	</div>
+	<div id="div3">
+		<h5>- Project by Team K. </h5>
+	</div>
+</body>
+</html>
