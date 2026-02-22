@@ -1,3 +1,61 @@
 body {
 	font-family: 'DM Sans', system-ui, sans-serif;
 }
+
+/* Header dropdown when open */
+.nav-dropdown.is-open {
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0);
+}
+
+.nav-dropdown {
+	transform: translateY(-8px);
+}
+
+.nav-menu-chevron.is-open {
+	transform: rotate(180deg);
+}
+
+/* Landing hero */
+.landing-hero {
+	background: linear-gradient(135deg, #355872 0%, #4a6b8a 40%, #5c7d9e 100%);
+	box-shadow: 0 20px 50px -20px rgba(53, 88, 114, 0.45);
+}
+
+.landing-hero-inner {
+	position: relative;
+	min-height: 280px;
+}
+
+.landing-hero-pattern {
+	position: absolute;
+	inset: 0;
+	opacity: 0.08;
+	background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Feature cards subtle hover lift */
+.feature-card {
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.feature-card:hover {
+	transform: translateY(-2px);
+}
+
+/* Focus visible for accessibility */
+.tab-link:focus-visible,
+.nav-menu-btn:focus-visible,
+.go-to-tab:focus-visible {
+	outline: 2px solid #7AAACE;
+	outline-offset: 2px;
+}
+
+@media (max-width: 640px) {
+	.landing-hero-inner {
+		min-height: 240px;
+		padding-left: 1rem;
+		padding-right: 1rem;
+	}
+}

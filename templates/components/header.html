@@ -1,25 +1,23 @@
-<header class="fixed top-0 left-0 right-0 z-20 bg-brand text-white shadow-lg">
-	<div class="max-w-7xl mx-auto px-4">
-		<div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 py-3">
-			<a href="/" class="text-xl sm:text-2xl font-bold tracking-tight shrink-0">Credit Risk Assessment</a>
-			<nav class="flex flex-wrap items-center gap-1 sm:gap-2" role="tablist" aria-label="Main navigation" id="main-nav">
-				{% set nav_tabs = [
-					('home', 'Home'),
-					('assess-score', 'Assess Score'),
-					('problem-statement', 'Problem Statement'),
-					('info', 'Info')
-				] %}
-				{% for section_id, label in nav_tabs %}
-				<a href="/#{{ section_id }}" 
-					class="tab-link px-3 py-2 rounded-lg text-sm font-medium transition text-white/90 hover:bg-white/10 hover:text-white{% if active_tab == section_id %} bg-accent/20 text-white{% endif %}"
-					data-section="{{ section_id }}"
-					role="tab"
-					aria-controls="section-{{ section_id }}"
-					id="tab-{{ section_id }}">
-					{{ label }}
-				</a>
-				{% endfor %}
-			</nav>
+<header class="header-bar fixed top-0 left-0 right-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-sm">
+	<div class="max-w-6xl mx-auto px-4">
+		<div class="flex items-center justify-between h-16 sm:h-18">
+			<a href="/" class="flex items-center gap-2 shrink-0">
+				<span class="text-xl sm:text-2xl font-bold text-brand tracking-tight">Credit Risk</span>
+			</a>
+			<div class="relative" id="nav-dropdown-wrap">
+				<button type="button" id="nav-menu-btn" class="nav-menu-btn flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand text-white text-sm font-medium hover:bg-brand/90 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition aria-expanded="false" aria-haspopup="true" aria-controls="nav-dropdown">
+					<span>Menu</span>
+					<svg class="w-5 h-5 transition-transform nav-menu-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+					</svg>
+				</button>
+				<div id="nav-dropdown" class="nav-dropdown absolute right-0 mt-2 w-56 rounded-2xl bg-white shadow-xl border border-slate-200/80 py-2 opacity-0 invisible transition-all duration-200" role="menu" aria-orientation="vertical" aria-hidden="true">
+					<a href="/#home" class="tab-link nav-dropdown-item block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-accent/20 hover:text-brand transition" data-section="home" role="menuitem">Home</a>
+					<a href="/#assess-score" class="tab-link nav-dropdown-item block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-accent/20 hover:text-brand transition" data-section="assess-score" role="menuitem">Assess Score</a>
+					<a href="/#problem-statement" class="tab-link nav-dropdown-item block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-accent/20 hover:text-brand transition" data-section="problem-statement" role="menuitem">Problem Statement</a>
+					<a href="/#info" class="tab-link nav-dropdown-item block px-4 py-3 text-sm font-medium text-slate-700 hover:bg-accent/20 hover:text-brand transition" data-section="info" role="menuitem">Info</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </header>

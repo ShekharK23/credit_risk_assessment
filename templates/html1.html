@@ -2,28 +2,90 @@
 {% set active_tab = 'home' %}
 
 {% block content %}
-<div class="max-w-7xl mx-auto">
-	<!-- Section: Home -->
-	<section id="section-home" class="tab-panel" role="tabpanel" aria-labelledby="tab-home">
-		<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden max-w-3xl mx-auto text-center py-12 px-6 sm:py-16 sm:px-10">
-			<h2 class="text-2xl sm:text-3xl font-bold text-brand mb-3">Credit Risk Assessment</h2>
-			<p class="text-brand/80 leading-relaxed mb-6">Assess applicant credit risk using a trained model. Enter applicant details to get a default or non-default prediction.</p>
-			<button type="button" class="go-to-tab inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-8 rounded-xl shadow-md hover:shadow-lg transition min-h-[44px]" data-section="assess-score">Assess Score</button>
+<div class="max-w-6xl mx-auto">
+	<!-- Section: Home (Landing) -->
+	<section id="section-home" class="tab-panel" role="tabpanel">
+		<div class="landing-hero rounded-3xl overflow-hidden mb-12 sm:mb-16">
+			<div class="landing-hero-inner px-6 py-12 sm:px-12 sm:py-20 text-center relative">
+				<div class="landing-hero-pattern" aria-hidden="true"></div>
+				<div class="relative z-10">
+					<div class="inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl bg-white/20 backdrop-blur mb-6">
+						<svg class="w-8 h-8 sm:w-10 sm:h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+						</svg>
+					</div>
+					<h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white tracking-tight mb-3">Credit Risk Assessment</h1>
+					<p class="text-white/90 text-lg sm:text-xl max-w-2xl mx-auto mb-8">Predict default risk in seconds. Smarter decisions for lenders and analysts.</p>
+					<button type="button" class="go-to-tab inline-flex items-center justify-center gap-2 bg-white text-brand font-semibold py-4 px-8 rounded-2xl shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition min-h-[52px] text-base" data-section="assess-score">
+						<span>Get Started</span>
+						<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+						</svg>
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="landing-usage mb-12 sm:mb-16">
+			<h2 class="text-xl sm:text-2xl font-bold text-brand mb-4 text-center">What it does</h2>
+			<p class="text-slate-600 text-center max-w-2xl mx-auto leading-relaxed">This tool helps <strong>lenders and credit analysts</strong> quickly assess whether an applicant is likely to default. Enter applicant and loan details once, and get a clear <strong>Default</strong> or <strong>Non-Default</strong> prediction powered by a trained CatBoost model.</p>
+		</div>
+
+		<div class="landing-features mb-12 sm:mb-16">
+			<h2 class="text-xl sm:text-2xl font-bold text-brand mb-8 text-center">Features</h2>
+			<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+				<div class="feature-card rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-accent/40 transition">
+					<div class="feature-icon w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+						</svg>
+					</div>
+					<h3 class="font-semibold text-brand mb-2">Fast prediction</h3>
+					<p class="text-slate-600 text-sm leading-relaxed">Get a result as soon as you submit the form—no waiting.</p>
+				</div>
+				<div class="feature-card rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-accent/40 transition">
+					<div class="feature-icon w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"/>
+						</svg>
+					</div>
+					<h3 class="font-semibold text-brand mb-2">Multiple factors</h3>
+					<p class="text-slate-600 text-sm leading-relaxed">Age, income, loan details, and credit history in one flow.</p>
+				</div>
+				<div class="feature-card rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-accent/40 transition">
+					<div class="feature-icon w-12 h-12 rounded-xl bg-accent/30 flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+						</svg>
+					</div>
+					<h3 class="font-semibold text-brand mb-2">Clear outcome</h3>
+					<p class="text-slate-600 text-sm leading-relaxed">Binary Default / Non-Default so you can act with confidence.</p>
+				</div>
+				<div class="feature-card rounded-2xl p-6 bg-white border border-slate-200/80 shadow-sm hover:shadow-md hover:border-accent/40 transition">
+					<div class="feature-icon w-12 h-12 rounded-xl bg-primary/20 flex items-center justify-center mb-4">
+						<svg class="w-6 h-6 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"/>
+						</svg>
+					</div>
+					<h3 class="font-semibold text-brand mb-2">Responsive</h3>
+					<p class="text-slate-600 text-sm leading-relaxed">Use it on desktop, tablet, or phone—layout adapts to you.</p>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Section: Assess Score (form) -->
-	<section id="section-assess-score" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-assess-score">
+	<section id="section-assess-score" class="tab-panel hidden" role="tabpanel">
 		{% include 'components/assess_form.html' %}
 	</section>
 
 	<!-- Section: Problem Statement -->
-	<section id="section-problem-statement" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-problem-statement">
+	<section id="section-problem-statement" class="tab-panel hidden" role="tabpanel">
 		{% include 'components/problem_statement.html' %}
 	</section>
 
 	<!-- Section: Info -->
-	<section id="section-info" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-info">
+	<section id="section-info" class="tab-panel hidden" role="tabpanel">
 		{% include 'components/info.html' %}
 	</section>
 </div>

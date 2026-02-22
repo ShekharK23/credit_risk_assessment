@@ -27,10 +27,9 @@
 </head>
 <body class="bg-cream min-h-screen text-[#355872] antialiased">
 	{% include 'components/header.html' %}
-	<main class="pt-[72px] pb-20 px-4 sm:px-6 min-h-screen">
+	<main class="pt-[72px] pb-16 px-4 sm:px-6 min-h-screen">
 		{% block content %}{% endblock %}
 	</main>
-	{% include 'components/footer.html' %}
 	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
 	{% block scripts %}{% endblock %}
 </body>
