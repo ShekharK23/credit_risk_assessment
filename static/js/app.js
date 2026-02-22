@@ -7,7 +7,6 @@
 		var menuBtn = document.getElementById('nav-menu-btn');
 		var dropdown = document.getElementById('nav-dropdown');
 		var wrap = document.getElementById('nav-dropdown-wrap');
-		var chevron = document.querySelector('.nav-menu-chevron');
 		var panels = document.querySelectorAll('.tab-panel');
 		var tabLinks = document.querySelectorAll('.tab-link');
 		var onIndex = (window.location.pathname === '/' || window.location.pathname === '');
@@ -20,7 +19,6 @@
 			if (menuBtn) {
 				menuBtn.setAttribute('aria-expanded', 'false');
 			}
-			if (chevron) chevron.classList.remove('is-open');
 		}
 
 		function openDropdown() {
@@ -29,7 +27,6 @@
 				dropdown.setAttribute('aria-hidden', 'false');
 			}
 			if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
-			if (chevron) chevron.classList.add('is-open');
 		}
 
 		function toggleDropdown() {
