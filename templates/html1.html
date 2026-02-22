@@ -10,8 +10,10 @@
 			theme: {
 				extend: {
 					colors: {
-						primary: { 500: '#0d9488', 600: '#0f766e', 700: '#115e59' },
-						surface: { 50: '#f8fafc', 100: '#f1f5f9', 800: '#1e293b' }
+						brand: '#355872',
+						primary: { DEFAULT: '#7AAACE', hover: '#6a9ac4' },
+						accent: '#9CD5FF',
+						cream: '#F7F8F0'
 					}
 				}
 			}
@@ -24,9 +26,9 @@
 		body { font-family: 'DM Sans', system-ui, sans-serif; }
 	</style>
 </head>
-<body class="bg-slate-100 min-h-screen text-slate-800 antialiased">
+<body class="bg-cream min-h-screen text-[#355872] antialiased">
 	<!-- Header -->
-	<header class="fixed top-0 left-0 right-0 z-20 bg-slate-800 text-white shadow-lg">
+	<header class="fixed top-0 left-0 right-0 z-20 bg-brand text-white shadow-lg">
 		<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
 			<h1 class="text-xl sm:text-2xl font-bold tracking-tight">Credit Risk Assessment</h1>
 		</div>
@@ -36,26 +38,26 @@
 		<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-8">
 			<!-- Form card -->
 			<section class="w-full lg:w-[400px] lg:shrink-0">
-				<div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200/80 overflow-hidden">
-					<div class="bg-gradient-to-r from-primary-600 to-primary-700 px-6 py-4">
+				<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden">
+					<div class="bg-brand px-6 py-4">
 						<h2 class="text-lg font-semibold text-white">Applicant Details</h2>
-						<p class="text-primary-100 text-sm mt-0.5">Enter the details to assess credit risk</p>
+						<p class="text-accent text-sm mt-0.5">Enter the details to assess credit risk</p>
 					</div>
 					<form method="POST" action="{{ url_for('home') }}" class="p-6 space-y-4">
 						<div>
-							<label for="person_age" class="block text-sm font-medium text-slate-700 mb-1">Age</label>
+							<label for="person_age" class="block text-sm font-medium text-brand mb-1">Age</label>
 							<input type="number" id="person_age" name="person_age" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div>
-							<label for="person_income" class="block text-sm font-medium text-slate-700 mb-1">Income</label>
+							<label for="person_income" class="block text-sm font-medium text-brand mb-1">Income</label>
 							<input type="number" id="person_income" name="person_income" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div>
-							<label for="person_home_ownership" class="block text-sm font-medium text-slate-700 mb-1">Home Ownership</label>
+							<label for="person_home_ownership" class="block text-sm font-medium text-brand mb-1">Home Ownership</label>
 							<select id="person_home_ownership" name="person_home_ownership"
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition bg-white">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
 								<option value="RENT">Rent</option>
 								<option value="MORTGAGE">Mortgage</option>
 								<option value="OWN">Own</option>
@@ -63,14 +65,14 @@
 							</select>
 						</div>
 						<div>
-							<label for="person_emp_length" class="block text-sm font-medium text-slate-700 mb-1">Employment Length (years)</label>
+							<label for="person_emp_length" class="block text-sm font-medium text-brand mb-1">Employment Length (years)</label>
 							<input type="number" id="person_emp_length" name="person_emp_length" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div>
-							<label for="loan_intent" class="block text-sm font-medium text-slate-700 mb-1">Loan Intent</label>
+							<label for="loan_intent" class="block text-sm font-medium text-brand mb-1">Loan Intent</label>
 							<select id="loan_intent" name="loan_intent"
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition bg-white">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
 								<option value="VENTURE">Business / Venture</option>
 								<option value="DEBTCONSOLIDATION">Debt Consolidation</option>
 								<option value="EDUCATION">Educational</option>
@@ -80,9 +82,9 @@
 							</select>
 						</div>
 						<div>
-							<label for="loan_grade" class="block text-sm font-medium text-slate-700 mb-1">Loan Grade</label>
+							<label for="loan_grade" class="block text-sm font-medium text-brand mb-1">Loan Grade</label>
 							<select id="loan_grade" name="loan_grade"
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition bg-white">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
 								<option value="A">A</option>
 								<option value="B">B</option>
 								<option value="C">C</option>
@@ -93,40 +95,40 @@
 							</select>
 						</div>
 						<div>
-							<label for="loan_amnt" class="block text-sm font-medium text-slate-700 mb-1">Loan Amount</label>
+							<label for="loan_amnt" class="block text-sm font-medium text-brand mb-1">Loan Amount</label>
 							<input type="number" id="loan_amnt" name="loan_amnt" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div>
-							<label for="loan_int_rate" class="block text-sm font-medium text-slate-700 mb-1">Loan Interest Rate (%)</label>
+							<label for="loan_int_rate" class="block text-sm font-medium text-brand mb-1">Loan Interest Rate (%)</label>
 							<input type="text" inputmode="decimal" id="loan_int_rate" name="loan_int_rate" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div>
-							<label for="loan_percent_income" class="block text-sm font-medium text-slate-700 mb-1">Loan % of Income</label>
+							<label for="loan_percent_income" class="block text-sm font-medium text-brand mb-1">Loan % of Income</label>
 							<input type="text" inputmode="decimal" id="loan_percent_income" name="loan_percent_income" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div>
-							<span class="block text-sm font-medium text-slate-700 mb-2">Default on File</span>
+							<span class="block text-sm font-medium text-brand mb-2">Default on File</span>
 							<div class="flex items-center gap-4">
 								<label class="inline-flex items-center gap-2 cursor-pointer">
-									<input type="radio" name="cb_person_default_on_file" value="Y" class="w-4 h-4 text-primary-600 focus:ring-primary-500">
-									<span class="text-slate-700">Yes</span>
+									<input type="radio" name="cb_person_default_on_file" value="Y" class="w-4 h-4 text-primary focus:ring-primary">
+									<span class="text-brand">Yes</span>
 								</label>
 								<label class="inline-flex items-center gap-2 cursor-pointer">
-									<input type="radio" name="cb_person_default_on_file" value="N" checked class="w-4 h-4 text-primary-600 focus:ring-primary-500">
-									<span class="text-slate-700">No</span>
+									<input type="radio" name="cb_person_default_on_file" value="N" checked class="w-4 h-4 text-primary focus:ring-primary">
+									<span class="text-brand">No</span>
 								</label>
 							</div>
 						</div>
 						<div>
-							<label for="cb_person_cred_hist_length" class="block text-sm font-medium text-slate-700 mb-1">Credit History Length (years)</label>
+							<label for="cb_person_cred_hist_length" class="block text-sm font-medium text-brand mb-1">Credit History Length (years)</label>
 							<input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" required
-								class="w-full rounded-lg border border-slate-300 px-3 py-2 text-slate-800 placeholder-slate-400 focus:border-primary-500 focus:ring-2 focus:ring-primary-500/20 outline-none transition">
+								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
 						</div>
 						<div class="pt-2">
-							<button type="submit" class="w-full bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition">
+							<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 transition">
 								Assess Risk
 							</button>
 						</div>
@@ -136,12 +138,12 @@
 
 			<!-- Content card -->
 			<section class="flex-1 min-w-0">
-				<div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200/80 overflow-hidden h-full">
-					<div class="bg-slate-800 px-6 py-4">
+				<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden h-full">
+					<div class="bg-brand px-6 py-4">
 						<h2 class="text-lg font-semibold text-white">Problem Statement</h2>
-						<p class="text-slate-300 text-sm mt-0.5">Context on credit risk management</p>
+						<p class="text-accent text-sm mt-0.5">Context on credit risk management</p>
 					</div>
-					<div class="p-6 sm:p-8 text-slate-600 leading-relaxed space-y-4">
+					<div class="p-6 sm:p-8 text-brand/90 leading-relaxed space-y-4">
 						<p class="text-justify indent-6">
 							Today the study of financial credit risk assessment attracts increasing attention in the face of one of the most severe financial crises ever observed in the world.
 							The accurate assessment of financial credit risk and prediction of business failure play an essential role both in economics and society.
@@ -159,7 +161,7 @@
 		</div>
 	</main>
 
-	<footer class="fixed bottom-0 left-0 right-0 z-20 bg-slate-800 text-slate-400 py-3 px-4">
+	<footer class="fixed bottom-0 left-0 right-0 z-20 bg-brand text-accent py-3 px-4">
 		<div class="max-w-7xl mx-auto flex justify-end">
 			<span class="text-sm">— Project by Team K.</span>
 		</div>

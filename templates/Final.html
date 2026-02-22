@@ -10,8 +10,10 @@
 			theme: {
 				extend: {
 					colors: {
-						primary: { 500: '#0d9488', 600: '#0f766e', 700: '#115e59' },
-						surface: { 50: '#f8fafc', 100: '#f1f5f9', 800: '#1e293b' }
+						brand: '#355872',
+						primary: { DEFAULT: '#7AAACE', hover: '#6a9ac4' },
+						accent: '#9CD5FF',
+						cream: '#F7F8F0'
 					}
 				}
 			}
@@ -24,9 +26,9 @@
 		body { font-family: 'DM Sans', system-ui, sans-serif; }
 	</style>
 </head>
-<body class="bg-slate-100 min-h-screen text-slate-800 antialiased">
+<body class="bg-cream min-h-screen text-[#355872] antialiased">
 	<!-- Header -->
-	<header class="fixed top-0 left-0 right-0 z-20 bg-slate-800 text-white shadow-lg">
+	<header class="fixed top-0 left-0 right-0 z-20 bg-brand text-white shadow-lg">
 		<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
 			<h1 class="text-xl sm:text-2xl font-bold tracking-tight">Credit Risk Assessment</h1>
 		</div>
@@ -34,19 +36,19 @@
 
 	<main class="pt-20 pb-20 px-4 sm:px-6 min-h-screen flex items-center justify-center">
 		<div class="w-full max-w-md">
-			<div class="bg-white rounded-2xl shadow-xl shadow-slate-200/50 border border-slate-200/80 overflow-hidden">
-				<div class="bg-slate-800 px-6 py-4 text-center">
+			<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden">
+				<div class="bg-brand px-6 py-4 text-center">
 					<h2 class="text-lg font-semibold text-white">Prediction Result</h2>
 				</div>
 				<div class="p-8 text-center">
 					{% if data == 0 %}
-					<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-100 mb-4">
-						<svg class="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/40 mb-4">
+						<svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
 						</svg>
 					</div>
-					<p class="text-2xl sm:text-3xl font-bold text-emerald-700">Non-Default</p>
-					<p class="text-slate-500 text-sm mt-1">Low credit risk</p>
+					<p class="text-2xl sm:text-3xl font-bold text-brand">Non-Default</p>
+					<p class="text-brand/70 text-sm mt-1">Low credit risk</p>
 					{% else %}
 					<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
 						<svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -54,9 +56,9 @@
 						</svg>
 					</div>
 					<p class="text-2xl sm:text-3xl font-bold text-red-700">Default</p>
-					<p class="text-slate-500 text-sm mt-1">High credit risk</p>
+					<p class="text-brand/70 text-sm mt-1">High credit risk</p>
 					{% endif %}
-					<a href="/" class="mt-8 inline-flex items-center justify-center w-full sm:w-auto bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 transition min-h-[44px]">
+					<a href="/" class="mt-8 inline-flex items-center justify-center w-full sm:w-auto bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-8 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 transition min-h-[44px]">
 						Back to Form
 					</a>
 				</div>
@@ -64,7 +66,7 @@
 		</div>
 	</main>
 
-	<footer class="fixed bottom-0 left-0 right-0 z-20 bg-slate-800 text-slate-400 py-3 px-4">
+	<footer class="fixed bottom-0 left-0 right-0 z-20 bg-brand text-accent py-3 px-4">
 		<div class="max-w-7xl mx-auto flex justify-end">
 			<span class="text-sm">— Project by Team K.</span>
 		</div>
