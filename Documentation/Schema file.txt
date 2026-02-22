@@ -1,0 +1,23 @@
+Quick Feature Description
+Feature - 1 ---> Age (in years)
+
+Feature - 2 ---> Annual Income (In INR)
+
+Feature - 3 ---> Home ownership (Nominal Categorical)
+
+Feature - 4 ---> Employment length (in years)
+
+Feature - 5 ---> Loan intention (Purpose of Loan)
+
+Feature - 6 ---> Loan grade (Ordinal Categorical)
+
+Feature - 7 ---> Loan amount (in INR)
+
+Feature - 8 ---> Interest rate (in percentage)
+
+Feature - 9 ---> Loan status (0 is non default 1 is default) ---> Target ---> Binary Classification
+Feature - 10 ---> Loan - Percent income (Debt - Equity Ratio) (in percentage)
+
+Feature - 11 ---> History of default (Nominal Categorical)
+
+Feature - 12 ---> Credit history length (in years)
