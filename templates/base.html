@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}Credit Risk Assessment{% endblock %}</title>
+	<script src="https://cdn.tailwindcss.com"></script>
+	<script>
+		tailwind.config = {
+			theme: {
+				extend: {
+					colors: {
+						brand: '#355872',
+						primary: { DEFAULT: '#7AAACE', hover: '#6a9ac4' },
+						accent: '#9CD5FF',
+						cream: '#F7F8F0'
+					}
+				}
+			}
+		}
+	</script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}">
+	{% block head %}{% endblock %}
+</head>
+<body class="bg-cream min-h-screen text-[#355872] antialiased">
+	{% include 'components/header.html' %}
+	<main class="pt-[72px] pb-20 px-4 sm:px-6 min-h-screen">
+		{% block content %}{% endblock %}
+	</main>
+	{% include 'components/footer.html' %}
+	<script src="{{ url_for('static', filename='js/app.js') }}"></script>
+	{% block scripts %}{% endblock %}
+</body>
+</html>

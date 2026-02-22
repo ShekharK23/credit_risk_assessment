@@ -1,170 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Credit Risk Assessment</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script>
-		tailwind.config = {
-			theme: {
-				extend: {
-					colors: {
-						brand: '#355872',
-						primary: { DEFAULT: '#7AAACE', hover: '#6a9ac4' },
-						accent: '#9CD5FF',
-						cream: '#F7F8F0'
-					}
-				}
-			}
-		}
-	</script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<style type="text/tailwindcss">
-		body { font-family: 'DM Sans', system-ui, sans-serif; }
-	</style>
-</head>
-<body class="bg-cream min-h-screen text-[#355872] antialiased">
-	<!-- Header -->
-	<header class="fixed top-0 left-0 right-0 z-20 bg-brand text-white shadow-lg">
-		<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
-			<h1 class="text-xl sm:text-2xl font-bold tracking-tight">Credit Risk Assessment</h1>
-		</div>
-	</header>
+{% extends 'base.html' %}
+{% set active_tab = 'home' %}
 
-	<main class="pt-20 pb-20 px-4 sm:px-6 min-h-screen">
-		<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-6 lg:gap-8">
-			<!-- Form card -->
-			<section class="w-full lg:w-[400px] lg:shrink-0">
-				<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden">
-					<div class="bg-brand px-6 py-4">
-						<h2 class="text-lg font-semibold text-white">Applicant Details</h2>
-						<p class="text-accent text-sm mt-0.5">Enter the details to assess credit risk</p>
-					</div>
-					<form method="POST" action="{{ url_for('home') }}" class="p-6 space-y-4">
-						<div>
-							<label for="person_age" class="block text-sm font-medium text-brand mb-1">Age</label>
-							<input type="number" id="person_age" name="person_age" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div>
-							<label for="person_income" class="block text-sm font-medium text-brand mb-1">Income</label>
-							<input type="number" id="person_income" name="person_income" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div>
-							<label for="person_home_ownership" class="block text-sm font-medium text-brand mb-1">Home Ownership</label>
-							<select id="person_home_ownership" name="person_home_ownership"
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
-								<option value="RENT">Rent</option>
-								<option value="MORTGAGE">Mortgage</option>
-								<option value="OWN">Own</option>
-								<option value="OTHER">Other</option>
-							</select>
-						</div>
-						<div>
-							<label for="person_emp_length" class="block text-sm font-medium text-brand mb-1">Employment Length (years)</label>
-							<input type="number" id="person_emp_length" name="person_emp_length" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div>
-							<label for="loan_intent" class="block text-sm font-medium text-brand mb-1">Loan Intent</label>
-							<select id="loan_intent" name="loan_intent"
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
-								<option value="VENTURE">Business / Venture</option>
-								<option value="DEBTCONSOLIDATION">Debt Consolidation</option>
-								<option value="EDUCATION">Educational</option>
-								<option value="HOMEIMPROVEMENT">Home Improvement</option>
-								<option value="MEDICAL">Medical</option>
-								<option value="PERSONAL">Personal</option>
-							</select>
-						</div>
-						<div>
-							<label for="loan_grade" class="block text-sm font-medium text-brand mb-1">Loan Grade</label>
-							<select id="loan_grade" name="loan_grade"
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
-								<option value="A">A</option>
-								<option value="B">B</option>
-								<option value="C">C</option>
-								<option value="D">D</option>
-								<option value="E">E</option>
-								<option value="F">F</option>
-								<option value="G">G</option>
-							</select>
-						</div>
-						<div>
-							<label for="loan_amnt" class="block text-sm font-medium text-brand mb-1">Loan Amount</label>
-							<input type="number" id="loan_amnt" name="loan_amnt" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div>
-							<label for="loan_int_rate" class="block text-sm font-medium text-brand mb-1">Loan Interest Rate (%)</label>
-							<input type="text" inputmode="decimal" id="loan_int_rate" name="loan_int_rate" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div>
-							<label for="loan_percent_income" class="block text-sm font-medium text-brand mb-1">Loan % of Income</label>
-							<input type="text" inputmode="decimal" id="loan_percent_income" name="loan_percent_income" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div>
-							<span class="block text-sm font-medium text-brand mb-2">Default on File</span>
-							<div class="flex items-center gap-4">
-								<label class="inline-flex items-center gap-2 cursor-pointer">
-									<input type="radio" name="cb_person_default_on_file" value="Y" class="w-4 h-4 text-primary focus:ring-primary">
-									<span class="text-brand">Yes</span>
-								</label>
-								<label class="inline-flex items-center gap-2 cursor-pointer">
-									<input type="radio" name="cb_person_default_on_file" value="N" checked class="w-4 h-4 text-primary focus:ring-primary">
-									<span class="text-brand">No</span>
-								</label>
-							</div>
-						</div>
-						<div>
-							<label for="cb_person_cred_hist_length" class="block text-sm font-medium text-brand mb-1">Credit History Length (years)</label>
-							<input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" required
-								class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
-						</div>
-						<div class="pt-2">
-							<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 transition">
-								Assess Risk
-							</button>
-						</div>
-					</form>
-				</div>
-			</section>
-
-			<!-- Content card -->
-			<section class="flex-1 min-w-0">
-				<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden h-full">
-					<div class="bg-brand px-6 py-4">
-						<h2 class="text-lg font-semibold text-white">Problem Statement</h2>
-						<p class="text-accent text-sm mt-0.5">Context on credit risk management</p>
-					</div>
-					<div class="p-6 sm:p-8 text-brand/90 leading-relaxed space-y-4">
-						<p class="text-justify indent-6">
-							Today the study of financial credit risk assessment attracts increasing attention in the face of one of the most severe financial crises ever observed in the world.
-							The accurate assessment of financial credit risk and prediction of business failure play an essential role both in economics and society.
-							Credit risk management is the practice of mitigating losses by understanding the adequacy of a bank's capital and loan loss reserves at any given time—a process that has long been a challenge for financial institutions.
-						</p>
-						<p class="text-justify indent-6">
-							The global financial crisis and the credit crunch that followed put credit risk management into the regulatory spotlight. As a result, regulators began to demand more transparency. They wanted to know that a bank has thorough knowledge of customers and their associated credit risk. New Basel III regulations will create an even bigger regulatory burden for banks.
-						</p>
-						<p class="text-justify indent-6">
-							To comply with the more stringent regulatory requirements and absorb the higher capital costs for credit risk, many banks are overhauling their approaches to credit risk. But banks who view this as strictly a compliance exercise are being short-sighted. Better credit risk management also presents an opportunity to greatly improve overall performance and secure a competitive advantage.
-						</p>
-					</div>
-				</div>
-			</section>
+{% block content %}
+<div class="max-w-7xl mx-auto">
+	<!-- Section: Home -->
+	<section id="section-home" class="tab-panel" role="tabpanel" aria-labelledby="tab-home">
+		<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden max-w-3xl mx-auto text-center py-12 px-6 sm:py-16 sm:px-10">
+			<h2 class="text-2xl sm:text-3xl font-bold text-brand mb-3">Credit Risk Assessment</h2>
+			<p class="text-brand/80 leading-relaxed mb-6">Assess applicant credit risk using a trained model. Enter applicant details to get a default or non-default prediction.</p>
+			<button type="button" class="go-to-tab inline-flex items-center justify-center bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-8 rounded-xl shadow-md hover:shadow-lg transition min-h-[44px]" data-section="assess-score">Assess Score</button>
 		</div>
-	</main>
+	</section>
 
-	<footer class="fixed bottom-0 left-0 right-0 z-20 bg-brand text-accent py-3 px-4">
-		<div class="max-w-7xl mx-auto flex justify-end">
-			<span class="text-sm">— Project by Shekhar K.</span>
-		</div>
-	</footer>
-</body>
-</html>
+	<!-- Section: Assess Score (form) -->
+	<section id="section-assess-score" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-assess-score">
+		{% include 'components/assess_form.html' %}
+	</section>
+
+	<!-- Section: Problem Statement -->
+	<section id="section-problem-statement" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-problem-statement">
+		{% include 'components/problem_statement.html' %}
+	</section>
+
+	<!-- Section: Info -->
+	<section id="section-info" class="tab-panel hidden" role="tabpanel" aria-labelledby="tab-info">
+		{% include 'components/info.html' %}
+	</section>
+</div>
+{% endblock %}

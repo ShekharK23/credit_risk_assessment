@@ -1,0 +1,98 @@
+<div class="max-w-xl mx-auto">
+	<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden">
+		<div class="bg-brand px-6 py-4">
+			<h2 class="text-lg font-semibold text-white">Applicant Details</h2>
+			<p class="text-accent text-sm mt-0.5">Enter the details to assess credit risk</p>
+		</div>
+		<form method="POST" action="{{ url_for('home') }}" class="p-6 space-y-4">
+			<div>
+				<label for="person_age" class="block text-sm font-medium text-brand mb-1">Age</label>
+				<input type="number" id="person_age" name="person_age" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div>
+				<label for="person_income" class="block text-sm font-medium text-brand mb-1">Income</label>
+				<input type="number" id="person_income" name="person_income" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div>
+				<label for="person_home_ownership" class="block text-sm font-medium text-brand mb-1">Home Ownership</label>
+				<select id="person_home_ownership" name="person_home_ownership"
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
+					<option value="RENT">Rent</option>
+					<option value="MORTGAGE">Mortgage</option>
+					<option value="OWN">Own</option>
+					<option value="OTHER">Other</option>
+				</select>
+			</div>
+			<div>
+				<label for="person_emp_length" class="block text-sm font-medium text-brand mb-1">Employment Length (years)</label>
+				<input type="number" id="person_emp_length" name="person_emp_length" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div>
+				<label for="loan_intent" class="block text-sm font-medium text-brand mb-1">Loan Intent</label>
+				<select id="loan_intent" name="loan_intent"
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
+					<option value="VENTURE">Business / Venture</option>
+					<option value="DEBTCONSOLIDATION">Debt Consolidation</option>
+					<option value="EDUCATION">Educational</option>
+					<option value="HOMEIMPROVEMENT">Home Improvement</option>
+					<option value="MEDICAL">Medical</option>
+					<option value="PERSONAL">Personal</option>
+				</select>
+			</div>
+			<div>
+				<label for="loan_grade" class="block text-sm font-medium text-brand mb-1">Loan Grade</label>
+				<select id="loan_grade" name="loan_grade"
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition bg-white">
+					<option value="A">A</option>
+					<option value="B">B</option>
+					<option value="C">C</option>
+					<option value="D">D</option>
+					<option value="E">E</option>
+					<option value="F">F</option>
+					<option value="G">G</option>
+				</select>
+			</div>
+			<div>
+				<label for="loan_amnt" class="block text-sm font-medium text-brand mb-1">Loan Amount</label>
+				<input type="number" id="loan_amnt" name="loan_amnt" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div>
+				<label for="loan_int_rate" class="block text-sm font-medium text-brand mb-1">Loan Interest Rate (%)</label>
+				<input type="text" inputmode="decimal" id="loan_int_rate" name="loan_int_rate" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div>
+				<label for="loan_percent_income" class="block text-sm font-medium text-brand mb-1">Loan % of Income</label>
+				<input type="text" inputmode="decimal" id="loan_percent_income" name="loan_percent_income" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div>
+				<span class="block text-sm font-medium text-brand mb-2">Default on File</span>
+				<div class="flex items-center gap-4">
+					<label class="inline-flex items-center gap-2 cursor-pointer">
+						<input type="radio" name="cb_person_default_on_file" value="Y" class="w-4 h-4 text-primary focus:ring-primary">
+						<span class="text-brand">Yes</span>
+					</label>
+					<label class="inline-flex items-center gap-2 cursor-pointer">
+						<input type="radio" name="cb_person_default_on_file" value="N" checked class="w-4 h-4 text-primary focus:ring-primary">
+						<span class="text-brand">No</span>
+					</label>
+				</div>
+			</div>
+			<div>
+				<label for="cb_person_cred_hist_length" class="block text-sm font-medium text-brand mb-1">Credit History Length (years)</label>
+				<input type="number" id="cb_person_cred_hist_length" name="cb_person_cred_hist_length" required
+					class="w-full rounded-lg border border-accent/50 px-3 py-2 text-brand placeholder-gray-400 focus:border-primary focus:ring-2 focus:ring-primary/30 outline-none transition">
+			</div>
+			<div class="pt-2">
+				<button type="submit" class="w-full bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-4 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 transition">
+					Assess Risk
+				</button>
+			</div>
+		</form>
+	</div>
+</div>

@@ -1,75 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<title>Credit Risk Assessment – Result</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<script src="https://cdn.tailwindcss.com"></script>
-	<script>
-		tailwind.config = {
-			theme: {
-				extend: {
-					colors: {
-						brand: '#355872',
-						primary: { DEFAULT: '#7AAACE', hover: '#6a9ac4' },
-						accent: '#9CD5FF',
-						cream: '#F7F8F0'
-					}
-				}
-			}
-		}
-	</script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-	<style type="text/tailwindcss">
-		body { font-family: 'DM Sans', system-ui, sans-serif; }
-	</style>
-</head>
-<body class="bg-cream min-h-screen text-[#355872] antialiased">
-	<!-- Header -->
-	<header class="fixed top-0 left-0 right-0 z-20 bg-brand text-white shadow-lg">
-		<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-center">
-			<h1 class="text-xl sm:text-2xl font-bold tracking-tight">Credit Risk Assessment</h1>
-		</div>
-	</header>
+{% extends 'base.html' %}
 
-	<main class="pt-20 pb-20 px-4 sm:px-6 min-h-screen flex items-center justify-center">
-		<div class="w-full max-w-md">
-			<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden">
-				<div class="bg-brand px-6 py-4 text-center">
-					<h2 class="text-lg font-semibold text-white">Prediction Result</h2>
+{% block title %}Credit Risk Assessment – Result{% endblock %}
+
+{% block content %}
+<div class="min-h-[60vh] flex items-center justify-center">
+	<div class="w-full max-w-md">
+		<div class="bg-white rounded-2xl shadow-xl border border-accent/30 overflow-hidden">
+			<div class="bg-brand px-6 py-4 text-center">
+				<h2 class="text-lg font-semibold text-white">Prediction Result</h2>
+			</div>
+			<div class="p-8 text-center">
+				{% if data == 0 %}
+				<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/40 mb-4">
+					<svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+					</svg>
 				</div>
-				<div class="p-8 text-center">
-					{% if data == 0 %}
-					<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/40 mb-4">
-						<svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
-						</svg>
-					</div>
-					<p class="text-2xl sm:text-3xl font-bold text-brand">Non-Default</p>
-					<p class="text-brand/70 text-sm mt-1">Low credit risk</p>
-					{% else %}
-					<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
-						<svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
-						</svg>
-					</div>
-					<p class="text-2xl sm:text-3xl font-bold text-red-700">Default</p>
-					<p class="text-brand/70 text-sm mt-1">High credit risk</p>
-					{% endif %}
-					<a href="/" class="mt-8 inline-flex items-center justify-center w-full sm:w-auto bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-8 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 transition min-h-[44px]">
-						Back to Form
-					</a>
+				<p class="text-2xl sm:text-3xl font-bold text-brand">Non-Default</p>
+				<p class="text-brand/70 text-sm mt-1">Low credit risk</p>
+				{% else %}
+				<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-100 mb-4">
+					<svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+					</svg>
 				</div>
+				<p class="text-2xl sm:text-3xl font-bold text-red-700">Default</p>
+				<p class="text-brand/70 text-sm mt-1">High credit risk</p>
+				{% endif %}
+				<a href="/" class="mt-8 inline-flex items-center justify-center w-full sm:w-auto bg-primary hover:bg-primary-hover text-white font-semibold py-3 px-8 rounded-xl shadow-md hover:shadow-lg focus:ring-2 focus:ring-primary focus:ring-offset-2 transition min-h-[44px]">
+					Back to Home
+				</a>
 			</div>
 		</div>
-	</main>
-
-	<footer class="fixed bottom-0 left-0 right-0 z-20 bg-brand text-accent py-3 px-4">
-		<div class="max-w-7xl mx-auto flex justify-end">
-			<span class="text-sm">— Project by Shekhar K.</span>
-		</div>
-	</footer>
-</body>
-</html>
+	</div>
+</div>
+{% endblock %}
