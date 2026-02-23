@@ -13,6 +13,40 @@ body {
 	transform: translateY(-8px);
 }
 
+/* Ensure nav dropdown opens directly below the trigger button */
+#nav-dropdown-wrap {
+	position: relative;
+}
+#nav-dropdown {
+	top: 100%;
+	margin-top: 0.5rem;
+	min-width: 14rem;
+}
+
+/* Form select dropdowns – theme match, opens below (native behavior) */
+.theme-select {
+	background-color: #F7F8F0; /* cream */
+	color: #355872; /* brand */
+	border: 1px solid rgba(156, 213, 255, 0.6); /* accent */
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23355872'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 0.75rem center;
+	background-size: 1.25rem;
+	padding-right: 2.5rem;
+}
+.theme-select:hover {
+	border-color: #7AAACE; /* primary */
+}
+.theme-select:focus {
+	border-color: #7AAACE;
+	box-shadow: 0 0 0 2px rgba(122, 170, 206, 0.3);
+}
+.theme-select option {
+	background: #F7F8F0;
+	color: #355872;
+	padding: 0.5rem;
+}
+
 /* Landing hero */
 .landing-hero {
 	background: linear-gradient(135deg, #355872 0%, #4a6b8a 40%, #5c7d9e 100%);

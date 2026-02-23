@@ -87,6 +87,32 @@
 		});
 
 		if (panels.length) showSection(getSectionFromHash());
+
+		/* Assess form: enable Submit only when all fields are filled */
+		var assessForm = document.getElementById('assess-form');
+		var assessBtn = document.getElementById('assess-risk-btn');
+		if (assessForm && assessBtn) {
+			var inputs = assessForm.querySelectorAll('input:not([type="radio"]), select');
+			var radioName = 'cb_person_default_on_file';
+
+			function isFormValid() {
+				for (var i = 0; i < inputs.length; i++) {
+					var el = inputs[i];
+					var val = (el.value || '').toString().trim();
+					if (val === '') return false;
+				}
+				var radioChecked = assessForm.querySelector('input[name="' + radioName + '"]:checked');
+				return !!radioChecked;
+			}
+
+			function updateButton() {
+				assessBtn.disabled = !isFormValid();
+			}
+
+			assessForm.addEventListener('input', updateButton);
+			assessForm.addEventListener('change', updateButton);
+			updateButton();
+		}
 	}
 
 	if (document.readyState === 'loading') {
