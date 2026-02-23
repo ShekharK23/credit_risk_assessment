@@ -70,8 +70,8 @@ def download_report():
     buf = BytesIO()
     doc = SimpleDocTemplate(
         buf, pagesize=letter,
-        rightMargin=0.65 * inch, leftMargin=0.65 * inch,
-        topMargin=0.5 * inch, bottomMargin=0.45 * inch,
+        rightMargin=0.75 * inch, leftMargin=0.75 * inch,
+        topMargin=0.6 * inch, bottomMargin=0.6 * inch,
     )
     styles = getSampleStyleSheet()
 
@@ -85,9 +85,9 @@ def download_report():
     title_style = ParagraphStyle(
         name="ReportTitle",
         parent=styles["Heading1"],
-        fontSize=20,
+        fontSize=16,
         textColor=brand,
-        spaceAfter=2,
+        spaceAfter=12,
         fontName="Helvetica-Bold",
     )
     subtitle_style = ParagraphStyle(
@@ -95,90 +95,84 @@ def download_report():
         parent=styles["Normal"],
         fontSize=9,
         textColor=colors.HexColor("#64748b"),
-        spaceAfter=14,
+        spaceAfter=24,
     )
     section_style = ParagraphStyle(
         name="SectionHead",
         parent=styles["Heading2"],
-        fontSize=11,
+        fontSize=12,
         textColor=brand,
         fontName="Helvetica-Bold",
-        spaceBefore=10,
-        spaceAfter=6,
+        spaceBefore=16,
+        spaceAfter=10,
         alignment=TA_LEFT,
     )
 
     story = []
 
-    story.append(Paragraph("&#8226; Credit Risk Assessment Report", title_style))
-    story.append(Paragraph(f"Generated on {datetime.now().strftime('%B %d, %Y at %I:%M %p')}", subtitle_style))
+    story.append(Paragraph("Credit Risk Assessment – Report", title_style))
+    story.append(Paragraph(f"Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M')}", subtitle_style))
+    story.append(Spacer(1, 0.3 * inch))
 
-    story.append(Paragraph("&#8226; Applicant details", section_style))
+    story.append(Paragraph("Applicant details", section_style))
     table_data = [["Field", "Value"]]
     for key, label in REPORT_LABELS.items():
         value = inputs.get(key, "")
         table_data.append([label, str(value)])
-    t = Table(table_data, colWidths=[2.5 * inch, 3.5 * inch])
+    t = Table(table_data, colWidths=[2.6 * inch, 3.4 * inch])
     t.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, 0), brand),
         ("TEXTCOLOR", (0, 0), (-1, 0), colors.white),
         ("FONTNAME", (0, 0), (-1, 0), "Helvetica-Bold"),
-        ("FONTSIZE", (0, 0), (-1, 0), 10),
-        ("TOPPADDING", (0, 0), (-1, 0), 8),
-        ("BOTTOMPADDING", (0, 0), (-1, 0), 8),
-        ("LEFTPADDING", (0, 0), (-1, -1), 12),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 12),
+        ("FONTSIZE", (0, 0), (-1, 0), 11),
+        ("TOPPADDING", (0, 0), (-1, 0), 12),
+        ("BOTTOMPADDING", (0, 0), (-1, 0), 12),
+        ("LEFTPADDING", (0, 0), (-1, -1), 14),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 14),
         ("BACKGROUND", (0, 1), (-1, -1), cream),
         ("TEXTCOLOR", (0, 1), (-1, -1), brand),
         ("FONTNAME", (0, 1), (-1, -1), "Helvetica"),
-        ("FONTSIZE", (0, 1), (-1, -1), 9),
-        ("TOPPADDING", (0, 1), (-1, -1), 6),
-        ("BOTTOMPADDING", (0, 1), (-1, -1), 6),
+        ("FONTSIZE", (0, 1), (-1, -1), 10),
+        ("TOPPADDING", (0, 1), (-1, -1), 10),
+        ("BOTTOMPADDING", (0, 1), (-1, -1), 10),
         ("ROWBACKGROUNDS", (0, 1), (-1, -1), [cream, colors.white]),
+        ("LINEBELOW", (0, 0), (-1, 0), 0, colors.white),
         ("BOX", (0, 0), (-1, -1), 0.5, accent),
         ("INNERGRID", (0, 0), (-1, -1), 0.25, accent),
     ]))
     story.append(t)
-    story.append(Spacer(1, 0.22 * inch))
+    story.append(Spacer(1, 0.35 * inch))
 
-    if result == 0:
-        outcome_label = "Non-Default"
-        outcome_sub = "Low credit risk"
-        outcome_color = green
-        outcome_icon = "+"
-    else:
-        outcome_label = "Default"
-        outcome_sub = "High credit risk"
-        outcome_color = red
-        outcome_icon = "!"
-
-    story.append(Paragraph("&#8226; Assessment of risk", section_style))
-    assessment_data = [
-        [Paragraph(f'<font size="13" color="#355872"><b>[{outcome_icon}]  {outcome_label}</b></font><br/><font size="9" color="#64748b">{outcome_sub}</font>')],
-    ]
-    outcome_table = Table(assessment_data, colWidths=[6 * inch])
+    story.append(Paragraph("Assessment of risk", section_style))
+    outcome_text = "Non-Default (Low credit risk)" if result == 0 else "Default (High credit risk)"
+    outcome_color = green if result == 0 else red
+    outcome_data = [[outcome_text]]
+    outcome_table = Table(outcome_data, colWidths=[6 * inch])
     outcome_table.setStyle(TableStyle([
         ("BACKGROUND", (0, 0), (-1, -1), accent),
         ("TEXTCOLOR", (0, 0), (-1, -1), outcome_color),
-        ("TOPPADDING", (0, 0), (-1, -1), 12),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 12),
-        ("LEFTPADDING", (0, 0), (-1, -1), 18),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 18),
-        ("ALIGN", (0, 0), (-1, -1), "LEFT"),
-        ("VALIGN", (0, 0), (-1, -1), "MIDDLE"),
+        ("FONTNAME", (0, 0), (-1, -1), "Helvetica-Bold"),
+        ("FONTSIZE", (0, 0), (-1, -1), 12),
+        ("TOPPADDING", (0, 0), (-1, -1), 14),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 14),
+        ("LEFTPADDING", (0, 0), (-1, -1), 16),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 16),
+        ("ALIGN", (0, 0), (-1, -1), "CENTER"),
         ("BOX", (0, 0), (-1, -1), 1, primary),
     ]))
     story.append(outcome_table)
-    story.append(Spacer(1, 0.15 * inch))
+    story.append(Spacer(1, 0.25 * inch))
 
+    footer_text = "This report was generated by the Credit Risk Assessment application. For internal use."
     footer_style = ParagraphStyle(
         name="Footer",
         parent=styles["Normal"],
-        fontSize=7,
+        fontSize=8,
         textColor=colors.HexColor("#94a3b8"),
         alignment=1,
     )
-    story.append(Paragraph("Credit Risk Assessment application &#8212; For internal use.", footer_style))
+    story.append(Spacer(1, 0.3 * inch))
+    story.append(Paragraph(footer_text, footer_style))
 
     doc.build(story)
     buf.seek(0)
