@@ -1,6 +1,7 @@
 import config
 import json
 import pickle
+import warnings
 import numpy as np
 
 class CREDIT_RISK_ASSESMENT():
@@ -18,11 +19,13 @@ class CREDIT_RISK_ASSESMENT():
         self.cb_person_cred_hist_length = cb_person_cred_hist_length
 
     def load_model(self):
-        with open(config.MODEL_PATH_DT,"rb") as f:
-            self.model = pickle.load(f)
-        with open(config.SCALING_PATH,"rb") as f1:
-            self.scaling = pickle.load(f1)
-        with open(config.JSON_PATH,"r") as f2:
+        with warnings.catch_warnings():
+            warnings.filterwarnings("ignore", message=".*unpickle.*version.*")
+            with open(config.MODEL_PATH_DT, "rb") as f:
+                self.model = pickle.load(f)
+            with open(config.SCALING_PATH, "rb") as f1:
+                self.scaling = pickle.load(f1)
+        with open(config.JSON_PATH, "r") as f2:
             self.json_data = json.load(f2)   
 
     def get_Credit_Risk(self):
